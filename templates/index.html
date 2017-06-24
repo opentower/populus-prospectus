@@ -1,0 +1,424 @@
+<html>
+<head>
+<title>Populus</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="canonical" href="http://populusjournal.com/">
+<meta property="og:title" content="Populus" />
+<meta property="og:description" content="Crowd-Sourced Peer Review in Philosophy" />
+<meta property="og:image" content="static/populus.jpg" />
+<meta property="og:url" content="http://populusjournal.com/" />
+<style>
+
+@font-face {
+    font-family: cinzel;
+    src: url(static/embed.otf);
+}
+
+@font-face {
+    font-family: street;
+    src: url(static/Streetvertising.ttf);
+}
+
+body {
+    margin: 0;
+    border-style: solid;
+    border-color: #C8C8C8;
+    border-width: 40px 75px 0px 75px;
+    letter-spacing: .2px;
+    font-size: 1.2em;
+}
+
+.page {
+    border-width: 1px 1px 0px 1px;
+    border-color: #B8B8B8;
+    border-style: solid;
+    padding: 48px 96px 48px 96px;
+}
+
+.jump { display: none; }
+.toc { display: none; }
+.gap { line-height: .25em; }
+.title { text-align: center; margin: 0 0 0 0; }
+.titlef { font-family: "cinzel"; font-size: 4em; letter-spacing: 4px; }
+.titlel { font-family: "cinzel"; font-size: 4em; }
+.subtitlea { text-align: center; }
+.subtitleb { text-align: center; font-size: 1.5em; font-variant: small-caps; text-decoration: underline; }
+.subtitlec { text-align: center; font-size: .9em; }
+.link { text-decoration: none; }
+.question { font-weight: bold; }
+.ital { font-style: italic; }
+.under { text-decoration: underline; display: inline; }
+.totop { font-size: .65em; }
+.highlight { background-color: #FFFF00; }
+.click { font-size: .9em; font-family: "times new roman"; font-variant: small-caps; }
+.email { height: 10px; width: 10px; }
+.icon { font-size: .6em; letter-spacing: 0px; }
+.foot { display: block; text-align: right; font-size: .6em }
+.pop { font-family: "cinzel"; }
+.ot { font-family: 'street' }
+
+.nolink a:link { color: #000000; cursor: text; }
+.nolink a:visited { color: #000000; cursor: text; }
+.nolink a:hover { color: #000000; cursor: text; }
+.nolink a:active { color: #000000; cursor: text; }
+
+table.qtable td { font-size: 1.2em; vertical-align: top; padding: 0 0 .25em 0; }
+
+table.menu { padding-bottom: 20px; }
+table.menu td {
+    padding-right: 75px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    vertical-align: top;
+}
+
+ul.housing li { margin: 0 0 .5em -0.75em; }
+ul { margin:.25em 0 .25em 0; }
+li { margin:.25em 0 .25em 0; }
+ol { margin: 5px 0 5px 0; }
+p { margin:0 0 .25em 0; }
+
+a:visited { color: #0000FF; text-decoration: none; }
+a:link { color: #0000FF; text-decoration: none; }
+a:hover { color: #0000FF; text-decoration: none; }
+a:active { color: #FF0000; text-decoration: none; }
+.ext { color: #0000FF !important; cursor: pointer !important; }
+
+</style>
+
+
+<script>
+function press() {
+    var b = document.getElementById("button");
+    var e = $('.toc');
+	if($(e).is(":hidden")) {
+            $(e).slideToggle();
+            b.innerHTML = "Hide Table of Contents";
+        }
+        else {
+            $(e).slideToggle();
+            b.innerHTML = "Show Table of Contents";
+        }
+}
+
+function expandall() {
+    var reset = $('.highlight');
+    $(reset).removeClass("highlight");
+    var a = $('.jump');
+    var b = document.getElementById("all");
+        if (b.innerHTML=="Expand All Contents") {
+            for(var i = 0; i < a.length; i++) { a[i].style.display = 'block'; }
+            document.body.className += " nolink";
+            b.innerHTML = "Collapse All Contents";
+        }
+        else {
+            for(var i = 0; i < a.length; i++) {
+                a[i].style.display = 'none'; }
+                document.body.className = "";
+                b.innerHTML = "Expand All Contents";
+        }
+}
+
+$(function() {
+    $("a#menu").click(function() {
+        var reset = $('.highlight');
+        $(reset).removeClass("highlight");
+        var name = $(this).data("tabname");
+        $("#" + name).addClass("highlight");
+    });
+});
+
+$(function() {
+    $("a#toggle").click(function() {
+        var b = document.getElementById("all");
+        var reset = $('.highlight');
+        $(reset).removeClass("highlight");
+        var state = b.innerHTML;
+        if (state == "Expand All Contents") {
+            var name = $(this).data("tabname");
+            var div = name.substr(0,1);
+            $("#" + div).slideToggle();
+            for(var i = 1; i < 6; i++) {
+                var els = name.substr(i,1);
+                if (els != "x") { $("#" + els).hide(""); }
+            }
+            for(var i = 5; i < name.length; i++) {
+                var fls = name.substr(i,1);
+                if ($("#" + fls).is(":visible")) { $("#" + fls).hide(""); }
+            }
+            return false;
+         }
+         else
+            return false;
+    });
+});
+
+function e(id) { document.getElementById(id).style.display = 'block'; }
+function c(id) { document.getElementById(id).style.display = 'none'; }
+
+</script>
+
+<base target='_self' />
+<link rel="icon" href="static/populus.png">
+</head>
+
+<body>
+<div class=page>
+<a name=top></a>
+<p class=title><span class=titlef>Populu</span><span class=titlel>s</span></p>
+<p class=subtitlea>Crowd-Sourced Peer Review in Philosophy</p><br>
+<p class=subtitleb>A Dynamic Prospectus</p>
+<p class=subtitlec>(unadorned links display/hide further information)</p>
+<br><span class=gap><br></span>
+
+<button id="button" class=click onclick="press()">Show Table of Contents</button>
+<br><br>
+
+<p id="toc" class=toc>
+<table class="menu">
+<tr>
+<td rowspan="4">
+<a class="ext question" id="menu" href="#what" data-tabname="what">What is Populus?</a>
+  <ul>
+  <li><a class=ext id="menu" href="#archive" data-tabname="aa" onclick="e('a'); c('j'); c('p'); c('s'); c('e'); c('f')")>A Curated Archive</a>
+    <ul>
+    <li><a class=ext id="menu" href="#member" data-tabname="mm" onclick="e('a'); e('m'); c('h'); c('w'); c('j'); c('p'); c('s'); c('e'); c('f')")>Membership Requirements</a>
+    <li><a class=ext id="menu" href="#housing" data-tabname="hh" onclick="e('a'); c('m'); e('h'); c('w'); c('j'); c('p'); c('s'); c('e'); c('f')")>Housing Policy</a>
+    <li><a class=ext id="menu" href="#wiki" data-tabname="ww" onclick="e('a'); c('m'); c('h'); e('w'); c('j'); c('p'); c('s'); c('e'); c('f')")>Review Wikis</a>
+    </ul>
+  <li><a class=ext id="menu" href="#journal" data-tabname="jj" onclick="e('j'); c('a'); c('m'); c('h'); c('w')")>A New Kind of Journal</a>
+    <ul>
+    <li><a class=ext id="menu" href="#submit" data-tabname="pp" onclick="e('j'); e('p'); c('a'); c('m'); c('h'); c('w')")>Submitting for Publication</a>
+      <ul>
+      <li><a class=ext id="menu" href="#simul" data-tabname="ss" onclick="e('j'); e('p'); e('s'); c('a'); c('m'); c('h'); c('w')")>Simultaneous Submission</a>
+        <ul>
+        <li><a class=ext id="menu" href="#edit" data-tabname="ee" onclick="e('j'); e('p'); e('s'); e('e'); c('a'); c('m'); c('h'); c('w')")>Editing Uploads</a>
+          <ul>
+          <li><a class=ext id="menu" href="#fees" data-tabname="ff" onclick="e('j'); e('p'); e('s'); e('e'); e('f'); c('a'); c('m'); c('h'); c('w')")>Fees</a>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</td>
+</tr>
+<tr>
+<td>
+<a class="ext question" id="menu" href="#why" data-tabname="why">Why Populus?</a>
+  <ul>
+  <li><a class=ext id="menu" href="#publish" data-tabname="bb" onclick="e('b'); c('r'); c('v')")>A Better Publishing Experience</a>
+  <li><a class=ext id="menu" href="#review" data-tabname="rr" onclick="c('b'); e('r'); c('v')")>A Better Reviewing Experience</a>
+  <li><a class=ext id="menu" href="#better" data-tabname="vv" onclick="c('b'); c('r'); e('v')")>A Better Archiving Experience</a>
+  </ul>
+</td>
+</tr>
+<tr>
+<td>
+<a class="ext question" id="menu" href="#how" data-tabname="how">How will Populus avoid...</a>
+  <ul>
+  <li><a class=ext id="menu" href="#popular" data-tabname="oo" onclick="e('o'); c('c'); c('l')")>...favoring popular subdisciplines?</a>
+  <li><a class=ext id="menu" href="#cheat" data-tabname="cc" onclick="c('o'); e('c'); c('l')")>...cheating?</a>
+  <li><a class=ext id="menu" href="#fail" data-tabname="ll" onclick="c('o'); c('c'); e('l')")>...failing?</a>
+  </ul>
+</td>
+</tr>
+<tr>
+<td>
+<p><a class="ext question" id="menu" data-tabname="where" href="#where">Where can I find out more?</a></p>
+</td>
+</tr>
+</table>
+</p>
+
+<button id="all" class=click onclick="expandall()">Expand All Contents</button>
+<br><br>
+
+<a name=what></a><br>
+<p class=question><span id="what">What Is Populus?</span></p>
+<p>Populus is <a href="javascript:;" id="toggle" data-tabname="ajpsefmhw")>a curated archive</a> and <a href="javascript:;" id="toggle" data-tabname="jamhwxpsef">a new kind of journal</a> for work in philosophy, with a committment to transparent, <a target='_blank' class=ext href="https://en.wikipedia.org/wiki/Crowdsourcing">crowd-sourced</a><span class=icon>&nbsp;</span><img src="static/externalbw.png"> peer review.
+
+    <a name=archive></a>
+    <div id="a" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="aa" class=under>A Curated Archive</p></td>
+</tr><tr><td></td>
+<td>Populus <a href="javascript:;" id="toggle" data-tabname="mhwxxx">members</a> can submit their unpublished and published (where consistent with their publisher's policies) work to the site as archive records, which will be made <a href="javascript:;" id="toggle" data-tabname="hmwxxx">freely available to the public</a>. Members can also read and review each other's work. Reviews are both quantitative ('upvote' or 'downvote') and qualitative, via a <a href="javascript:;" id="toggle" data-tabname="wmhxxx">wiki</a>. Votes are used to generate various ordered displays of archive records&mdash;e.g., by general popularity (net votes), popularity within subdisciplines, percentage of upvotes vs. downvotes, etc. The archive is intended to help philosophers find those works most relevant to their research or interests, and members are therefore expected to vote on the basis of the quality and contributory value of the work in question. By default, all reviews, both quantitative and qualitative, are anonymous. (Editors can tell that two reviews come from the same member, but not who that member is.) Anonymity will be breached only with the consent of the author or in extreme circumstances, such as for legal reasons.</td>
+</tr></table>
+</div>
+
+        <a name=member></a>
+        <div id="m" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&nbsp;</td>
+<td><p id="mm" class=under>Membership Requirements</p></td>
+</tr><tr><td></td>
+<td>To be eligible for membership, and therefore to submit works and vote, one must meet one or more of the following criteria:
+<ol>
+<li>Be a faculty member (including non-tenure-track and emeritus) or graduate student in philosophy.
+<li>Have published work in a recognized venue of philosophical publication.
+<li>Receive approval for an exception in the absence of (1) and (2).
+</ol>
+When applying for membership, one may either provide proof that one meets criteria (1) or (2), or apply for an exception. Those applying for exceptions will be asked to submit a sample of work for anonymous review. An appropriate reviewer will be selected and asked to determine whether on the basis of the work whether its author merits membership.</td>
+</tr></table>
+</div>
+
+        <a name=housing></a>
+        <div id="h" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&nbsp;</td>
+<td><p id="hh" class=under>Housing Policy</p></td>
+</tr><tr><td></td>
+<td><ul class=housing>
+<li><span class=ital>Unpublished archive records</span> will be housed on Populus servers, at least initially. As noted above, for the sake of transparency Populus flags changes to archive records, and there is currently no way to track this for unpublished work archived elsewhere. However, Populus is fully open to coordination with other archives, either to allow for easy linking of files on Populus servers or to allow for links on Populus to archive records on other servers, conditional on transparency in file-alteration.
+<li><span class=ital>Archive records of publications in other venues</span> may be housed on other servers, on the condition that they are publicly accessible. Thus, for instance, a member may add a link to a paper published in an open source journal, such as <a target="_blank" class=ext href="http://www.philosophersimprint.org/">Philosophers' Imprint</a><span class=icon>&nbsp;</span><img src="static/externalbw.png">. By contrast, if a member wishes to archive a paper published in a journal published by Springer, they must upload a penultimate draft, in keeping with <a target='_blank' class=ext href="https://www.springer.com/gp/open-access/authors-rights/self-archiving-policy/2124">Springer's self-archiving policy</a><span class=icon>&nbsp;</span><img src="static/externalbw.png">, since a link to the published work on Springer's servers would be unavailable to many people.
+<li><span class=ital>Journal submissions</span> and <span class=ital>publications in Populus</span> will be housed on Populus servers. Authors retain copyright and are therefore also welcome to archive elsewhere.
+</ul></td>
+</tr></table>
+</div>
+
+        <a name=wiki></a>
+        <div id="w" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&nbsp;</td>
+<td><p id="ww" class=under>Review Wikis</p></td>
+</tr><tr><td></td>
+<td>Just like on Wikipedia, rather than one person's writing a review and others' responding to it, once an initial review is written all subsequent reviewers will edit the initial review. Edits will be logged and visitors will be able to view previous versions and see how things have changed. If necessary, other features of Wikipedia will be adopted, such as editorial oversight to flag controversy (e.g., if a wiki is being edited back and forth in certain ways). The benefit of this system is that reviewers, authors and editors will have a single, manageably sized piece of written feedback, whereas traditional comment threads run the risk of becoming unmanageably bloated.</td>
+</tr></table>
+</div>
+
+    <a name=journal></a>
+    <div id="j" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="jj" class=under>A New Kind of Journal</p></td>
+</tr><tr><td></td>
+<td>Populus will periodically publish a volume of its journal (also called Populus). The projected publication schedule is quarterly or biannual. Unlike a traditional journal, conditional acceptance (think 'pending final review' for an edited volume) is a direct function of the quantitative review system. The function is expected to evolve over time. However, initially, it will simply output the <a href="javascript:;" id="toggle" data-tabname="pxxxxxsef">submissions</a> with the highest ratio of upvotes to downvotes, beyond a minimum number of total votes and a minimum vote ratio. Conditionally accepted works will then go through an expedited version of a more traditional review process. An appropriate referee will be asked to review the work and make a recommendation as to whether it should be published as-is or revised. Reviewers can also reject papers, but the expectation is that this will be rare, as there is a presumption in favor of publication on the basis of member votes. It should go without saying that members are also expected to be both charitable and respectful in editing the review wiki.</td>
+</tr></table>
+</div>
+
+        <a name=submit></a>
+        <div id="p" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&nbsp;</td>
+<td><p id="pp" class=under>Submitting for Publication</p></td>
+</tr><tr><td></td>
+<td>When uploading an archive record to Populus, members will have the option to flag their work as a journal submission. Journal submissions are anonymous (whereas archive records may or may not be) and authors must confirm that the work has not been published elsewhere (though <a href="javascript:;" id="toggle" data-tabname="sxxxxxef">simultaneous submission</a> is permitted). Members are encouraged to give priority to reviewing submissions, so as to aid in the review process. When reviewing submissions, members are expected to use the same criteria they would if acting as referees for any other journal: upvoting only if they believe the work warrants publication as-is or with a reasonable amount of editing, downvoting only if they believe that the paper does not warrant publication in its current or any similar form.</td>
+</tr></table>
+</div>
+
+            <a name=simul></a>
+            <div id="s" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&rdca;&nbsp;</td>
+<td><p id="ss" class=under>Simultaneous Submission</p></td>
+</tr><tr><td></td>
+<td>Populus is pleased to accept submissions simultaneously with other publication venues. However, members should be aware that once they have submitted work for consideration for publication with Populus, it remains under consideration until the author <a href="javascript:;" id="toggle" data-tabname="exxxxxf">changes its status</a>. Since most other journals do not allow simultaneous submission, members should be sure to check their work's status before submitting elsewhere. It is also members' responsibility to ensure that any archive records published elsewhere are in keeping with their publisher's policies on archiving.</td>
+</tr></table>
+</div>
+
+                <a name=edit></a>
+                <div id="e" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&rdca;&rdca;&nbsp;</td>
+<td><p id="ee" class=under>Editing Uploads</p></td>
+</tr><tr><td></td>
+<td>At any time, an author may choose to upload a new version of their work or remove it from the archive (with the exception of works published in the journal). Authors may also choose to change an archive record to a journal submission or vice versa (in the former case, this may involve a <a href="javascript:;" id="toggle" data-tabname="fxxxxx">fee</a>). If a new version is uploaded or the submission status is changed, all votes attached to the original upload remain and a flag will be added indicating that the file or its status has been altered.</td>
+</tr></table>
+</div>
+
+                    <a name=fees></a>
+                    <div id="f" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&rdca;&rdca;&rdca;&rdca;&nbsp;</td>
+<td><p id="ff" class=under>Fees</p></td>
+</tr><tr><td></td>
+<td>Access to the site and electronic subscription to the journal are free to the public. Membership and archiving are free to those who qualify. There may be a minimal charge for journal submission and/or publication, to help defray costs, though this will not be instituted until Populus is more established (if at all).</td>
+</tr></table>
+</div>
+<span class=gap><br></span>
+
+
+<a name=why></a><br>
+<p class=question><span id=why>Why Populus?</a></p>
+<p>Populus seeks to improve academic publishing by capitalizing on the advantages of the Internet. Some of these improvements concern things like price and access; others concern the integrity of the review process and its ability to track quality. Many of the former and some of the latter issues have been addressed by the recent development of open source, online journals. However, unlike such earlier projects, which have exported traditional publishing models to the Internet, Populus is a completely new kind of publication venue, aiming to provide markedly better experiences in <a href="javascript:;" id="toggle" data-tabname="brvxxx">publishing</a>, <a href="javascript:;" id="toggle" data-tabname="rbvxxx">reviewing</a>, and <a href="javascript:;" id="toggle" data-tabname="vbrxxx">archiving</a>.</p>
+
+    <a name=publish></a>
+    <div id="b" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="bb" class=under>A Better Publishing Experience</p></td>
+</tr><tr><td></td>
+<td>With Populus, there is no uncertainty regarding the timeline for review. Works are eligible for conditional acceptance at the deadline for each journal issue after submission, so long as they are flagged as journal submissions. What's more, authors have access to real-time feedback on their work. They are able to see at all times whether their work is being read and how it is being received, both in terms of votes and feedback on the wiki. Is your work getting less upvotes than you'd like? Are there comments in the wiki you believe you can address? Simply address them and upload a new version.</td>
+</tr></table>
+</div>
+
+    <a name=review></a>
+    <div id="r" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="rr" class=under>A Better Reviewing Experience</p></td>
+</tr><tr><td></td>
+<td>The hope is that philosophers will see reviewing works on Populus as a duty of citizenship within the philosophical community, much as many do now when asked to referee for other publication venues. However, because the review process relies most heavily on votes, reviewing for Populus is less arduous than reviewing for other journals. If there is a paper you are interested in reading, there is little cost to reading it through Populus and voting. Populus will also incorporate game-like incentives, such as status boosts (e.g., 'top reviewer'). It is TBD whether these will be purely symbolic or will come with tangible incentives, such as additional voting power.</td>
+</tr></table>
+</div>
+
+    <a name=better></a>
+    <div id="v" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="vv" class=under>A Better Archiving Experience</p></td>
+</tr><tr><td></td>
+<td>As Populus membership grows, having work on Populus will make it more visible to the philosophical community. Unlike with other archives, authors also gain insight into their peers' assessment of their work. As time goes on, further information may also be available. For example, information may become available on what other works appeal to the same population as yours. Citation indexing is also planned, and thus eventually Populus plans to offer real-time information on impact factor.</td>
+</tr></table>
+</div>
+<span class=gap><br></span>
+
+
+<a name=how></a><br>
+<p class=question><span id="how">How will Populus avoid...</span></p>
+<p class=subsec><a href="javascript:;" id="toggle" data-tabname="oclxxx">...favoring popular subdisciplines?</a></p>
+<p class=subsec><a href="javascript:;" id="toggle" data-tabname="colxxx">...cheating?</a></p>
+<p class=subsec><a href="javascript:;" id="toggle" data-tabname="locxxx">...failing?</a></p>
+
+    <a name=popular></a>
+    <div id="o" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="oo" class=under>Won't Populus favor work in popular areas?</p></td>
+</tr><tr><td></td>
+<td>Possibly. This is less of a concern when it comes to archive records, since part of Populus' purpose is explicitly to track popularity. However, it is a serious concern for journal submissions. One possibility is that the minimum threshold number of votes can be lowered for such areas. This will be kept in mind and addressed as necessary.</td>
+</tr></table>
+</div>
+
+    <a name=cheat></a>
+    <div id="c" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="cc" class=under>Won't some members just vote for their friends' work, or against their enemies', or otherwise use problematic criteria in voting?</p></td>
+</tr><tr><td></td>
+<td>The hope is that this will be the exception, rather than the rule. One reason for hope is that the desirability of being published in Populus depends on the journal's reputation. If members vote as worried here, without regard to quality, Populus' reputation is unlikely to be good, thus undercutting the incentive to vote this way in the first place. There is therefore good reason to vote properly not only for the sake of personal integrity, but also to preserve the integrity of Populus itself. Of course, there will probably be some who vote as worried here. But the same is true in the traditional peer review system. One of the hopes behind crowd-sourcing is that the overall results will remain reflect the better nature of the majority. There are doubtless many who leave insincere or self-serving reviews on (e.g.) Amazon. But in the best cases, the ratings systems on such sites nevertheless provide useful information to users.</td>
+</tr></table>
+</div>
+
+    <a name=fail></a>
+    <div id="l" class=jump><br>
+<table class=qtable><tr>
+<td>&nbsp;&rdca;&nbsp;</td>
+<td><p id="ll" class=under>Is this going to work?</p></td>
+</tr><tr><td></td>
+<td>That depends on a lot of things including, most importantly, you. Participation from the philosophical community will be indispensable to Populus' success. There are plenty of other potential worries, many surrounding how well crowd-sourced reviews will track quality. But as suggested above, the relevant question is not whether the Populus model is ideal, but whether it is better than the status quo and other feasible alternatives. Whether that is the case can only be determined through experimentation. Crucially, Populus is not a static experiment. Members are encouraged to offer suggestions regarding changes in editorial policy, and in the long run, the data itself may make recommendations. Suppose, for example, a correlation is found between the works upvoted by reviewers with certain profiles and those works' impact factor. Perhaps reviewers with those profiles will be given additional voting power, either permanently or for a special issue.</td>
+</tr></table>
+</div>
+<span class=gap><br></span>
+
+
+<a name=where></a><br>
+<p class=question><span id="where">Where can I find out more?</span></p>
+<p>Populus' founder, managing editor and managing web developer is <a target='_blank' class=ext href="http://davidfaraci.com">David Faraci</a><span class=icon>&nbsp;</span><img src="static/externalbw.png">. If you have a question, or are interesting in getting involved with Populus, you can email him at <a class=ext href="mailto:populusjournal@gmail.com">populusjournal@gmail.com</a><span class=icon>&nbsp;</span><img class=email src="static/email.png">. If you'd like to stay up-to-date on further developments, you can join the Populus mailing list <a target='_blank' class=ext href="https://groups.google.com/forum/#!forum/Populus/join">here</a><span class=icon>&nbsp;</span><img src="static/externalbw.png">.</p>
+<br><br>
+<p class=foot>An <a target='_blank' href="https://open-tower.com"><span class=ot>Open Tower</span></a> Project</p>
+<p class=foot>&copy; Copyright 2016 David Faraci</p>
+</body>
+</div>
+</html>
